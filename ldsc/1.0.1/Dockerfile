@@ -1,7 +1,7 @@
 FROM lyc1995/miniconda2:4.7.12
 
 RUN  apt update \
-	 && apt install -y --no-install-recommends zlib1g-dev \
+	 && apt install -y --no-install-recommends zlib1g-dev bedtools \
 	 && apt autoremove -y &&  apt autoclean -y &&  apt clean &&  rm -rf /var/lib/apt/lists/*
 
 RUN conda install python=2.7.13 \
@@ -11,7 +11,7 @@ RUN conda install python=2.7.13 \
 	&& pip install --no-cache-dir numpy==1.8.0 \
 	&& pip install --no-cache-dir pandas==0.20.0 \
 	&& pip install --no-cache-dir scipy==0.11.0 \
-	&& pip install --no-cache-dir pybedtools==0.7
+	&& pip install --no-cache-dir pybedtools==0.8
 
 RUN git clone https://github.com/bulik/ldsc.git \
 	&& cd ldsc \
